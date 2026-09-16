@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Pilot</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <!-- ── Header ── -->
+  <header class="header">
+    <div class="header-left">
+      <div class="logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="3" width="8" height="8" rx="2" fill="url(#g1)" />
+          <rect x="14" y="3" width="8" height="8" rx="2" fill="url(#g2)" />
+          <rect x="2" y="13" width="8" height="8" rx="2" fill="url(#g3)" />
+          <rect x="14" y="13" width="8" height="8" rx="2" fill="url(#g4)" opacity="0.4" />
+          <defs>
+            <linearGradient id="g1" x1="2" y1="3" x2="10" y2="11">
+              <stop stop-color="#818cf8"/><stop offset="1" stop-color="#6366f1"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="14" y1="3" x2="22" y2="11">
+              <stop stop-color="#34d399"/><stop offset="1" stop-color="#10b981"/>
+            </linearGradient>
+            <linearGradient id="g3" x1="2" y1="13" x2="10" y2="21">
+              <stop stop-color="#f472b6"/><stop offset="1" stop-color="#ec4899"/>
+            </linearGradient>
+            <linearGradient id="g4" x1="14" y1="13" x2="22" y2="21">
+              <stop stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+      <h1 class="header-title">Tab Pilot</h1>
+    </div>
+    <div class="header-right">
+      <span class="tab-count-badge" id="tabCountBadge" title="Total open tabs">0</span>
+      <button class="icon-btn" id="settingsBtn" title="Settings">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ── Navigation Tabs ── -->
+  <nav class="nav-tabs">
+    <button class="nav-tab active" data-view="tabs">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="3" y1="9" x2="21" y2="9"/>
+      </svg>
+      Tabs
+    </button>
+    <button class="nav-tab" data-view="groups">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+      </svg>
+      Groups
+    </button>
+    <button class="nav-tab" data-view="duplicates">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="8" y="2" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+      Dupes
+    </button>
+  </nav>
+
+  <!-- ── Tab View ── -->
+  <div class="view active" id="tabsView">
+    <!-- Search -->
+    <div class="search-bar">
+      <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search tabs by title or URL…">
+      <button class="search-clear hidden" id="searchClear" title="Clear search">×</button>
+    </div>
+
+    <!-- Bulk Actions -->
+    <div class="bulk-actions" id="bulkActions">
+      <label class="select-all-label">
+        <input type="checkbox" id="selectAll">
+        <span id="selectedCount">0 selected</span>
+      </label>
+      <div class="bulk-btns">
+        <button class="btn btn-warning btn-sm" id="closeSelectedBtn" title="Close selected tabs">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+          </svg>
+          Close Selected
+        </button>
+        <button class="btn btn-danger btn-sm" id="closeStaleBtn" title="Close all stale tabs">
+          🧹 Close Stale
+        </button>
+      </div>
+    </div>
+
+    <!-- Tab list -->
+    <div class="tab-list" id="tabList">
+      <div class="loading-spinner">
+        <div class="spinner"></div>
+        <p>Loading tabs…</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Groups View ── -->
+  <div class="view" id="groupsView">
+    <div class="groups-header">
+      <h2 class="section-title">Quick Launch Groups</h2>
+      <button class="btn btn-primary btn-sm" id="addGroupBtn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        New Group
+      </button>
+    </div>
+
+    <!-- Group Form (hidden by default) -->
+    <div class="group-form hidden" id="groupForm">
+      <input type="text" id="groupNameInput" class="form-input" placeholder="Group name (e.g., Morning Work)">
+      <div class="group-emoji-pick">
+        <label>Icon:</label>
+        <div class="emoji-options" id="emojiOptions">
+          <button class="emoji-btn active" data-emoji="🚀">🚀</button>
+          <button class="emoji-btn" data-emoji="☀️">☀️</button>
+          <button class="emoji-btn" data-emoji="💼">💼</button>
+          <button class="emoji-btn" data-emoji="📚">📚</button>
+          <button class="emoji-btn" data-emoji="🎮">🎮</button>
+          <button class="emoji-btn" data-emoji="🛒">🛒</button>
+          <button class="emoji-btn" data-emoji="🔬">🔬</button>
+          <button class="emoji-btn" data-emoji="🎵">🎵</button>
+        </div>
+      </div>
+      <textarea id="groupUrlsInput" class="form-textarea" placeholder="Enter URLs, one per line&#10;https://github.com&#10;https://mail.google.com" rows="4"></textarea>
+      <div class="group-form-actions">
+        <label class="checkbox-label">
+          <input type="checkbox" id="groupNewWindow">
+          Open in new window
+        </label>
+        <div class="form-btns">
+          <button class="btn btn-ghost btn-sm" id="cancelGroupBtn">Cancel</button>
+          <button class="btn btn-primary btn-sm" id="saveGroupBtn">Save Group</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Group List -->
+    <div class="group-list" id="groupList">
+      <div class="empty-state">
+        <p>No groups yet. Create one to open your favorite tabs in one click!</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Duplicates View ── -->
+  <div class="view" id="duplicatesView">
+    <div class="section-title-row">
+      <h2 class="section-title">Duplicate Tabs</h2>
+      <button class="btn btn-warning btn-sm" id="mergeAllDupesBtn" title="Keep one of each, close the rest">
+        Merge All
+      </button>
+    </div>
+    <div class="dupe-list" id="dupeList">
+      <div class="empty-state">
+        <p>✨ No duplicates found — your tabs are clean!</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

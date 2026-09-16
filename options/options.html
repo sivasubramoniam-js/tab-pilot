@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Pilot — Settings</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="options-container">
+    <header class="options-header">
+      <div class="options-logo">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none">
+          <rect x="2" y="3" width="8" height="8" rx="2" fill="url(#og1)" />
+          <rect x="14" y="3" width="8" height="8" rx="2" fill="url(#og2)" />
+          <rect x="2" y="13" width="8" height="8" rx="2" fill="url(#og3)" />
+          <rect x="14" y="13" width="8" height="8" rx="2" fill="url(#og4)" opacity="0.4" />
+          <defs>
+            <linearGradient id="og1" x1="2" y1="3" x2="10" y2="11">
+              <stop stop-color="#818cf8"/><stop offset="1" stop-color="#6366f1"/>
+            </linearGradient>
+            <linearGradient id="og2" x1="14" y1="3" x2="22" y2="11">
+              <stop stop-color="#34d399"/><stop offset="1" stop-color="#10b981"/>
+            </linearGradient>
+            <linearGradient id="og3" x1="2" y1="13" x2="10" y2="21">
+              <stop stop-color="#f472b6"/><stop offset="1" stop-color="#ec4899"/>
+            </linearGradient>
+            <linearGradient id="og4" x1="14" y1="13" x2="22" y2="21">
+              <stop stop-color="#fbbf24"/><stop offset="1" stop-color="#f59e0b"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <div>
+          <h1>Tab Pilot</h1>
+          <p class="subtitle">Settings & Preferences</p>
+        </div>
+      </div>
+    </header>
+
+    <!-- Staleness Section -->
+    <section class="settings-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Inactivity Tracking
+      </h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label for="staleThreshold">Stale tab threshold</label>
+          <p class="setting-desc">Tabs idle longer than this are marked as stale.</p>
+        </div>
+        <div class="setting-control">
+          <select id="staleThreshold" class="select-input">
+            <option value="5">5 minutes</option>
+            <option value="10">10 minutes</option>
+            <option value="15">15 minutes</option>
+            <option value="30" selected>30 minutes</option>
+            <option value="60">1 hour</option>
+            <option value="120">2 hours</option>
+            <option value="240">4 hours</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label for="badgeToggle">Badge count on icon</label>
+          <p class="setting-desc">Show number of stale tabs on the extension icon.</p>
+        </div>
+        <div class="setting-control">
+          <label class="toggle">
+            <input type="checkbox" id="badgeToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Notifications Section -->
+    <section class="settings-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+        </svg>
+        Notifications
+      </h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label for="notifToggle">Desktop notifications</label>
+          <p class="setting-desc">Get notified when too many tabs are idle.</p>
+        </div>
+        <div class="setting-control">
+          <label class="toggle">
+            <input type="checkbox" id="notifToggle" checked>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="setting-row" id="notifFrequencyRow">
+        <div class="setting-info">
+          <label for="notifFrequency">Notification frequency</label>
+          <p class="setting-desc">How often to send stale tab reminders.</p>
+        </div>
+        <div class="setting-control">
+          <select id="notifFrequency" class="select-input">
+            <option value="15">Every 15 min</option>
+            <option value="30">Every 30 min</option>
+            <option value="60" selected>Every 1 hour</option>
+            <option value="120">Every 2 hours</option>
+            <option value="240">Every 4 hours</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="setting-row" id="notifCountRow">
+        <div class="setting-info">
+          <label for="notifStaleCount">Notify when stale tabs exceed</label>
+          <p class="setting-desc">Minimum stale count to trigger a notification.</p>
+        </div>
+        <div class="setting-control">
+          <select id="notifStaleCount" class="select-input">
+            <option value="3">3 tabs</option>
+            <option value="5" selected>5 tabs</option>
+            <option value="10">10 tabs</option>
+            <option value="15">15 tabs</option>
+            <option value="20">20 tabs</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Privacy Section -->
+    <section class="settings-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+        Privacy
+      </h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label for="incognitoToggle">Monitor incognito tabs</label>
+          <p class="setting-desc">Track incognito tabs too. Data is never saved to disk — held in memory only.</p>
+        </div>
+        <div class="setting-control">
+          <label class="toggle">
+            <input type="checkbox" id="incognitoToggle">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <!-- Data Section -->
+    <section class="settings-section">
+      <h2 class="section-heading">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        Data & Export
+      </h2>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label>Export open tabs</label>
+          <p class="setting-desc">Download your current tabs as a file.</p>
+        </div>
+        <div class="setting-control export-btns">
+          <button class="btn btn-ghost btn-sm" id="exportMarkdown">Markdown</button>
+          <button class="btn btn-ghost btn-sm" id="exportJson">JSON</button>
+          <button class="btn btn-ghost btn-sm" id="exportCsv">CSV</button>
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label>Import / Export groups</label>
+          <p class="setting-desc">Backup or restore your quick-launch groups.</p>
+        </div>
+        <div class="setting-control export-btns">
+          <button class="btn btn-ghost btn-sm" id="exportGroups">Export</button>
+          <button class="btn btn-ghost btn-sm" id="importGroups">Import</button>
+          <input type="file" id="importGroupsFile" accept=".json" class="hidden">
+        </div>
+      </div>
+
+      <div class="setting-row">
+        <div class="setting-info">
+          <label>Copy all tab URLs</label>
+          <p class="setting-desc">Copy every open tab URL to clipboard.</p>
+        </div>
+        <div class="setting-control">
+          <button class="btn btn-primary btn-sm" id="copyAllUrls">📋 Copy</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="options-footer">
+      <p>Tab Pilot v1.0.0 · Made with 💜</p>
+    </footer>
+  </div>
+
+  <div class="toast-container">
+    <div class="toast hidden" id="toast"></div>
+  </div>
+
+  <script src="options.js"></script>
+</body>
+</html>
